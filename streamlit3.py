@@ -27,49 +27,48 @@ authenticator = Authenticate(
 )
 
 authenticator.login()
+
 def accueil():
-      st.title("Bienvenu sur le contenu réservé aux utilisateurs connectés")
+  st.title("Bienvenu sur le contenu réservé aux utilisateurs connectés 🎉")
 if st.session_state["authentication_status"]:
   accueil()
   # Le bouton de déconnexion
-  authenticator.logout("Déconnexion")
+  
 
-elif st.session_state["authentication_status"] is False:
-    st.error("L'username ou le password est/sont incorrect")
-elif st.session_state["authentication_status"] is None:
-    st.warning('Les champs username et mot de passe doivent être remplie')
-
-
-from streamlit_option_menu import option_menu
+  from streamlit_option_menu import option_menu
 
 # Using "with" notation
-with st.sidebar:
-    icon= st.button("Click here 🦊")
+  with st.sidebar:
+      authenticator.logout("Déconnexion 🦊")
+      #icon= st.button("Click here 🦊")
 # Création du menu qui va afficher les choix qui se trouvent dans la variable options
-    selection = option_menu(
-                menu_title=None,
-                options = ["Accueil", "Photos"])
-    if selection == "Accueil":
-      st.write("Bienvenue sur la page d'accueil !")
-    elif selection == "Photos":
-        st.write("Bienvenue sur mon album photo 🐱")
+      selection = option_menu(
+                 menu_title=None,
+                options = ["Accueil 👏", "Photos 	🖼️"])
+  if selection == "Accueil 👏":
+      st.write("Bienvenue sur la page d'accueil ! 📺")
+      image_url = 'https://demo-source.imgix.net/mountains.jpg'
+      st.image(image_url, caption = "Mountains")
 
-image_url = 'https://demo-source.imgix.net/mountains.jpg'
-st.image(image_url, caption = "Mountains")
+  elif selection == "Photos 	🖼️":
+      st.write("Bienvenue sur mon album photo 🐱")
+      col1, col2, col3 = st.columns(3)
+      with col1:
+        st.header("A cat")
+        st.image("https://static.streamlit.io/examples/cat.jpg")
 
-col1, col2, col3 = st.columns(3)
+      with col2:
+        st.header("A dog")
+        st.image("https://static.streamlit.io/examples/dog.jpg")
 
-with col1:
-  st.header("A cat")
-  st.image("https://static.streamlit.io/examples/cat.jpg")
+      with col3:
+        st.header("An owl")
+        st.image("https://static.streamlit.io/examples/owl.jpg")
 
-with col2:
-  st.header("A dog")
-  st.image("https://static.streamlit.io/examples/dog.jpg")
-
-with col3:
-  st.header("An owl")
-  st.image("https://static.streamlit.io/examples/owl.jpg")
+elif st.session_state["authentication_status"] is False:
+      st.error("L'username ou le password est/sont incorrect")
+elif st.session_state["authentication_status"] is None:
+      st.warning('Les champs username et mot de passe doivent être remplie')
 
 
 # Using object notation
