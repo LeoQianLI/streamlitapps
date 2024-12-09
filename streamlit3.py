@@ -34,7 +34,6 @@ if st.session_state["authentication_status"]:
   accueil()
   # Le bouton de déconnexion
   
-
   from streamlit_option_menu import option_menu
 
 # Using "with" notation
@@ -58,7 +57,7 @@ if st.session_state["authentication_status"]:
         st.image("https://static.streamlit.io/examples/cat.jpg")
 
       with col2:
-        st.header("A dog")
+        st.header("A dog 🐶")
         st.image("https://static.streamlit.io/examples/dog.jpg")
 
       with col3:
